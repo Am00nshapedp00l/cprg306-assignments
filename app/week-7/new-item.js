@@ -1,7 +1,8 @@
 "use client";
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid'; // Import uuid for generating random IDs
 
-const NewItem = () => {
+const NewItem = ({ onAddItem }) => {
     // State for quantity
     const [quantity, setQuantity] = useState(1);
 
@@ -24,16 +25,14 @@ const NewItem = () => {
 
         // Create item object
         const item = {
+            id: uuidv4(), // Generate a random ID
             name: name,
             quantity: quantity,
             category: category
         };
 
-        // Log the item object to the console
-        console.log(item);
-
-        // Alert the current state
-        alert(`Item Added:\nName: ${name}\nQuantity: ${quantity}\nCategory: ${category}`);
+        // Call the onAddItem prop with the item object
+        onAddItem(item);
 
         // Reset form fields
         setName("");
@@ -42,7 +41,7 @@ const NewItem = () => {
     };
 
     return (
-        <div className="p-6 bg-gray-800 max-w-md mx-40 mt-6 rounded-lg shadow-lg text-white">
+        <div className="p-6 bg-gray-800 max-w-md m-4 mx-px rounded-lg shadow-lg text-white ml-0">
             <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Name field */}
                 <div>

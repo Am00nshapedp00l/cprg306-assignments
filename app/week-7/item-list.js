@@ -1,22 +1,19 @@
 "use client";
-import itemsJson from "./items.json";
 import React, { useState } from 'react';
- 
- 
-export default function ItemList(){
+
+export default function ItemList({ items }) {
   const [sortBy, setSortBy] = useState("name");
- 
-  let items = [...itemsJson]; 
- 
-  if (sortBy == "name") {
-    items.sort((a, b) => a.name.localeCompare(b.name));
-  };
- 
-  if (sortBy == "category"){
-    items.sort((a, b) => a.category.localeCompare(b.category));
-  };
- 
- 
+
+  let sortedItems = [...items];
+
+  if (sortBy === "name") {
+    sortedItems.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  if (sortBy === "category") {
+    sortedItems.sort((a, b) => a.category.localeCompare(b.category));
+  }
+
   return (
     <main className="m-4 text-white bg-slate-950 flex flex-col items-start">
       <div className="px-4">
@@ -36,7 +33,7 @@ export default function ItemList(){
           </button>
         </div>
         <ul className="space-y-4">
-          {items.map((item, index) => (
+          {sortedItems.map((item, index) => (
             <li
               key={index}
               className="p-4 bg-slate-500 shadow-md border rounded-lg max-w-md w-full flex justify-between items-start"
