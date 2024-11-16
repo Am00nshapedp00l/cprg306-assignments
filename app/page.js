@@ -12,6 +12,7 @@ export default function Page()  {
       <Link href="http://localhost:3000/week-7">Week 7 Assignment</Link>
       <Link href="http://localhost:3000/week-8">Week 8 Assignment</Link>
       <Link href="http://localhost:3000/week-9">Week 9 Assignment</Link>
+      <Link href="http://localhost:3000/week-10">Week 10 Assignment</Link>
     </main>
   );
 }
